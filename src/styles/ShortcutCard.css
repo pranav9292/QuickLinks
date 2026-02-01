@@ -1,0 +1,72 @@
+.shortcut-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.shortcut-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transition: transform 0.3s;
+}
+
+.shortcut-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(8px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.shortcut-card:hover::before {
+  transform: scaleY(1);
+}
+
+.shortcut-favicon {
+  width: 28px;
+  height: 28px;
+  margin-right: 1rem;
+  border-radius: 6px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.shortcut-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.shortcut-delete {
+  opacity: 0;
+  background: rgba(255, 107, 107, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: #ff6b6b;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcut-card:hover .shortcut-delete {
+  opacity: 1;
+}
+
+.shortcut-delete:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: scale(1.1);
+}
