@@ -6,12 +6,12 @@ export const defaultData = {
       icon: '📚',
       color: '#FF6B6B',
       shortcuts: [
+        { name: 'TakeUforward', url: 'https://takeuforward.org' },
         { name: 'LeetCode', url: 'https://leetcode.com' },
         { name: 'GeeksforGeeks', url: 'https://www.geeksforgeeks.org' },
-        { name: 'TakeUforward', url: 'https://takeuforward.org' },
+        { name: 'GFG Links', url: 'https://gfg-links-striver.netlify.app/' },
         { name: 'Codolio', url: 'https://codolio.com' },
         { name: 'Fraz Sheet', url: 'https://www.fraz.io' },
-        { name: 'HackerRank', url: 'https://www.hackerrank.com' },
       ]
     },
     {
@@ -37,16 +37,6 @@ export const defaultData = {
       ]
     },
     {
-      id: 'social',
-      name: 'Social Media',
-      icon: '💬',
-      color: '#A8E6CF',
-      shortcuts: [
-        { name: 'LinkedIn', url: 'https://www.linkedin.com' },
-        { name: 'Instagram', url: 'https://www.instagram.com' },
-      ]
-    },
-    {
       id: 'dev',
       name: 'Development',
       icon: '💻',
@@ -55,6 +45,16 @@ export const defaultData = {
         { name: 'GitHub', url: 'https://github.com' },
         { name: 'Java W3Schools', url: 'https://www.w3schools.com/java' },
         { name: 'Python W3Schools', url: 'https://www.w3schools.com/python' },
+      ]
+    },
+    {
+      id: 'social',
+      name: 'Social Media',
+      icon: '💬',
+      color: '#A8E6CF',
+      shortcuts: [
+        { name: 'LinkedIn', url: 'https://www.linkedin.com' },
+        { name: 'Instagram', url: 'https://www.instagram.com' },
       ]
     },
     {

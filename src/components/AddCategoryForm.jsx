@@ -11,7 +11,7 @@ const AddCategoryForm = ({ onSubmit, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name) return;
-    onSubmit(formData);
+    (formData);
     setFormData({ name: '', icon: '', color: '#FF6B6B' });
   };
 
