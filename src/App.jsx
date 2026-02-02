@@ -20,6 +20,15 @@ const App = () => {
   const [isEditCategoryOpen, setIsEditCategoryOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
 
+  useEffect(() => {
+    document.title = 'QuickLinks';
+    const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+    link.type = 'image/svg+xml';
+    link.rel = 'icon';
+    link.href = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>';
+    document.head.appendChild(link);
+  }, []);
+
   // Save to localStorage whenever data changes
   useEffect(() => {
     localStorage.setItem('shortcutsData', JSON.stringify(data));
