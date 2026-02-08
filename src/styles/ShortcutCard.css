@@ -10,8 +10,8 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
-  min-height: 60px;  /* ← ADD THIS LINE - prevents shrinking */
-  flex-shrink: 0;    /* ← ADD THIS LINE - prevents flex from compressing */
+  min-height: 60px;
+  flex-shrink: 0;
 }
 
 .shortcut-card::before {
@@ -50,22 +50,40 @@
   font-size: 1rem;
 }
 
-.shortcut-delete {
+.shortcut-actions {
+  display: flex;
+  gap: 0.5rem;
   opacity: 0;
-  background: rgba(255, 107, 107, 0.2);
+  transition: opacity 0.2s;
+}
+
+.shortcut-card:hover .shortcut-actions {
+  opacity: 1;
+}
+
+.shortcut-edit,
+.shortcut-delete {
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 8px;
-  padding: 0.4rem;
+  padding: 0.5rem;
   cursor: pointer;
-  color: #ff6b6b;
+  color: rgba(255, 255, 255, 0.8);
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.shortcut-card:hover .shortcut-delete {
-  opacity: 1;
+.shortcut-edit:hover {
+  background: rgba(102, 126, 234, 0.3);
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+.shortcut-delete {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
 }
 
 .shortcut-delete:hover {

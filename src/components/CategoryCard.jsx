@@ -4,7 +4,7 @@ import ShortcutCard from './ShortcutCard';
 import EmptyState from './EmptyState';
 import '../styles/CategoryCard.css';
 
-const CategoryCard = ({ category, onEdit, onDelete, onDeleteShortcut }) => {
+const CategoryCard = ({ category, onEdit, onDelete, onDeleteShortcut, onEditShortcut }) => {
   return (
     <div className="category-card" style={{ '--accent-color': category.color }}>
       <div className="category-header">
@@ -30,6 +30,7 @@ const CategoryCard = ({ category, onEdit, onDelete, onDeleteShortcut }) => {
               shortcut={shortcut}
               accentColor={category.color}
               onDelete={() => onDeleteShortcut(category.id, index)}
+              onEdit={() => onEditShortcut(category.id, index, shortcut)}
             />
           ))
         ) : (

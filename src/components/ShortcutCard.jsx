@@ -1,9 +1,9 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, Edit2 } from 'lucide-react';
 import { getFavicon } from '../utils/helpers';
 import '../styles/ShortcutCard.css';
 
-const ShortcutCard = ({ shortcut, accentColor, onDelete }) => {
+const ShortcutCard = ({ shortcut, accentColor, onDelete, onEdit }) => {
   return (
     <a
       href={shortcut.url}
@@ -19,15 +19,28 @@ const ShortcutCard = ({ shortcut, accentColor, onDelete }) => {
         onError={(e) => e.target.src = 'https://www.google.com/s2/favicons?domain=google.com&sz=64'}
       />
       <span className="shortcut-name">{shortcut.name}</span>
-      <button
-        className="shortcut-delete"
-        onClick={(e) => {
-          e.preventDefault();
-          onDelete();
-        }}
-      >
-        <X size={16} />
-      </button>
+      <div className="shortcut-actions">
+        <button
+          className="shortcut-edit"
+          onClick={(e) => {
+            e.preventDefault();
+            onEdit();
+          }}
+          title="Edit shortcut"
+        >
+          <Edit2 size={14} />
+        </button>
+        <button
+          className="shortcut-delete"
+          onClick={(e) => {
+            e.preventDefault();
+            onDelete();
+          }}
+          title="Delete shortcut"
+        >
+          <X size={16} />
+        </button>
+      </div>
     </a>
   );
 };

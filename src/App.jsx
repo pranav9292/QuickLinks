@@ -5,6 +5,7 @@ import Modal from './components/Modal';
 import AddShortcutForm from './components/AddShortcutForm';
 import AddCategoryForm from './components/AddCategoryForm';
 import EditCategoryForm from './components/EditCategoryForm';
+import EditShortcutForm from './components/EditShortcutForm';
 import { defaultData } from './data/defaultData';
 import './styles/App.css';
 
@@ -18,16 +19,9 @@ const App = () => {
   const [isAddShortcutOpen, setIsAddShortcutOpen] = useState(false);
   const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
   const [isEditCategoryOpen, setIsEditCategoryOpen] = useState(false);
+  const [isEditShortcutOpen, setIsEditShortcutOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
-
-  useEffect(() => {
-    document.title = 'QuickLinks';
-    const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
-    link.type = 'image/svg+xml';
-    link.rel = 'icon';
-    link.href = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>';
-    document.head.appendChild(link);
-  }, []);
+  const [editingShortcut, setEditingShortcut] = useState(null);
 
   // Save to localStorage whenever data changes
   useEffect(() => {
@@ -56,6 +50,33 @@ const App = () => {
       )
     }));
     setIsAddShortcutOpen(false);
+  };
+
+  // Edit shortcut
+  const handleEditShortcut = (shortcutData) => {
+    setData(prev => ({
+      ...prev,
+      categories: prev.categories.map(cat =>
+        cat.id === editingShortcut.categoryId
+          ? {
+              ...cat,
+              shortcuts: cat.shortcuts.map((s, i) =>
+                i === editingShortcut.index
+                  ? { name: shortcutData.name, url: shortcutData.url }
+                  : s
+              )
+            }
+          : cat
+      )
+    }));
+    setIsEditShortcutOpen(false);
+    setEditingShortcut(null);
+  };
+
+  // Open edit shortcut modal
+  const openEditShortcutModal = (categoryId, index, shortcut) => {
+    setEditingShortcut({ categoryId, index, shortcut });
+    setIsEditShortcutOpen(true);
   };
 
   // Add category
@@ -204,6 +225,7 @@ const App = () => {
               onEdit={openEditModal}
               onDelete={handleDeleteCategory}
               onDeleteShortcut={handleDeleteShortcut}
+              onEditShortcut={openEditShortcutModal}
             />
           ))}
         </div>
@@ -219,6 +241,15 @@ const App = () => {
           categories={data.categories}
           onSubmit={handleAddShortcut}
           onCancel={() => setIsAddShortcutOpen(false)}
+        />
+      </Modal>
+
+      {/* Edit Shortcut Modal */}
+      <Modal isOpen={isEditShortcutOpen} onClose={() => setIsEditShortcutOpen(false)}>
+        <EditShortcutForm
+          shortcut={editingShortcut?.shortcut}
+          onSubmit={handleEditShortcut}
+          onCancel={() => setIsEditShortcutOpen(false)}
         />
       </Modal>
 
